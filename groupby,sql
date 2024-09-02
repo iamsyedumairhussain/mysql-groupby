@@ -1,0 +1,18 @@
+*SELECT WORKING_AREA,count(WORKING_AREA) FROM agents GROUP BY WORKING_AREA;
+
+*SELECT c.cust_city, COUNT(c.cust_city) FROM orders  o INNER JOIN customer c ON o.CUST_CODE = c.CUST_CODE GROUP BY c.cust_city; 
+
+*SELECT c.cust_city, COUNT(c.cust_city) AS 'City length' fROM orders  o INNER JOIN customer c ON o.CUST_CODE = c.CUST_CODE WHERE c.CUST_CITY !='Karachi' GROUP BY c.cust_city; 
+
+(where filters before grouping)
+*SELECT c.cust_city, COUNT(c.cust_city) AS 'City length' fROM orders  o INNER JOIN customer c 
+ON o.CUST_CODE = c.CUST_CODE 
+WHERE c.CUST_CITY !='' 
+GROUP BY c.cust_city ORDER BY COUNT(c.cust_city) desc ; 
+
+(where filters after grouping)
+*SELECT c.cust_city, COUNT(c.cust_city) AS 'City length' 
+fROM orders  o INNER JOIN customer c 
+ON o.CUST_CODE = c.CUST_CODE 
+GROUP BY c.cust_city;
+HAVING COUNT(c.cust_city) > 4;
